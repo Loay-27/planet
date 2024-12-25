@@ -16,7 +16,7 @@ class _CustomFloutingButtonState extends State<CustomFloutingButton> {
       onPressed: widget.onPress,
       backgroundColor: Colors.red,
       child:
-      Icon(widget.icon, color: Colors.white),
+      Icon(widget.icon, color: Colors.white70),
     );
   }
 }
