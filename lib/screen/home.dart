@@ -18,6 +18,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    final planetList = planetMap.entries.toList();
+
+    final currentKey = planetList[currentIndex].key;
+    final currentValue = planetList[currentIndex].value;
+
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
@@ -45,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 400,
                 width: double.infinity,
-                child: planets[currentIndex],
+                child: currentValue,
               ),
               Padding(
                 padding: const EdgeInsets.all(16),
@@ -62,15 +68,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                     ),
                     //    SizedBox(width: 90),
-                    const Text('Earth',
-                        style: TextStyle(
+                     Text(currentKey,
+                        style: const TextStyle(
                             color: Colors.white,
                             fontSize: 24,
                             fontWeight: FontWeight.w700)),
                     CustomFloutingButton(
                       icon: Icons.arrow_forward,
                       onPress: () {
-                        if (currentIndex < planets.length -1) {
+                        if (currentIndex < planetList.length -1) {
                           currentIndex++;
                         }
                         setState(() {});
