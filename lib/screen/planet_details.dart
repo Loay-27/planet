@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:untitled1/screen/home.dart';
 import 'package:untitled1/screen/widget/custom_details_text.dart';
 
 class PlanetScreen extends StatelessWidget {
@@ -16,22 +15,9 @@ class PlanetScreen extends StatelessWidget {
           children: [
             Image.asset('assets/images/Rectangle 4.png',
                 height: 220, width: double.infinity),
-            Container(
-              padding: const EdgeInsets.only(top: 35, left: 15),
-              alignment: Alignment.topLeft,
-              child: FloatingActionButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                backgroundColor: const Color(0xffEE403d),
-                child: const Icon(
-                  Icons.arrow_back,
-                  color: Colors.white,
-                ),
-              ),
-            ),
             ListView(
               children: [
+
                 Container(
                   alignment: Alignment.topCenter,
                   child: const Text('Earth',
@@ -65,6 +51,20 @@ class PlanetScreen extends StatelessWidget {
                 const CustomDetailsText(text: 'Mass (kg) : 5.972 × 10²⁴'),
                 const CustomDetailsText(text: 'Surface Area (km²) : 5.10 × 10⁸'),
               ],
+            ),
+            Container(
+              padding: const EdgeInsets.only(top: 35, left: 15),
+              alignment: Alignment.topLeft,
+              child: FloatingActionButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                backgroundColor: const Color(0xffEE403d),
+                child: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                ),
+              ),
             ),
           ],
         ));

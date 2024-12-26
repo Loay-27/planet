@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:untitled1/my_test.dart';
 import 'package:untitled1/screen/home.dart';
 import 'package:untitled1/screen/login.dart';
 import 'package:untitled1/screen/planet_details.dart';
-
 import 'package:untitled1/screen/test.dart';
 
 void main(){

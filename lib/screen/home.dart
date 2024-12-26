@@ -59,6 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomFloutingButton(
+                      heroTag: 'uniqueTag1',
                       icon: Icons.arrow_back,
                       onPress: () {
                         if (currentIndex > 0) {
@@ -74,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             fontSize: 24,
                             fontWeight: FontWeight.w700)),
                     CustomFloutingButton(
+                      heroTag: 'uniqueTag2',
                       icon: Icons.arrow_forward,
                       onPress: () {
                         if (currentIndex < planetList.length -1) {
