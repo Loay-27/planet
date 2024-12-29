@@ -4,6 +4,9 @@ import 'package:untitled1/screen/planet_details.dart';
 import 'package:untitled1/screen/widget/custom_button.dart';
 import 'package:untitled1/screen/widget/custom_floating_button.dart';
 
+int currentIndex = 0;
+
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -14,15 +17,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int currentIndex = 0;
+
 
   @override
   Widget build(BuildContext context) {
 
-    final planetList = planetMap.entries.toList();
-
-    final currentKey = planetList[currentIndex].key;
-    final currentValue = planetList[currentIndex].value;
+    final planet = planets[currentIndex];
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 400,
                 width: double.infinity,
-                child: currentValue,
+                child: planet['image'],
               ),
               Padding(
                 padding: const EdgeInsets.all(16),
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                     ),
                     //    SizedBox(width: 90),
-                     Text(currentKey,
+                     Text(planet['name'],
                         style: const TextStyle(
                             color: Colors.white,
                             fontSize: 24,
@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       heroTag: 'uniqueTag2',
                       icon: Icons.arrow_forward,
                       onPress: () {
-                        if (currentIndex < planetList.length -1) {
+                        if (currentIndex < planets.length -1) {
                           currentIndex++;
                         }
                         setState(() {});

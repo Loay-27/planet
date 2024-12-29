@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:untitled1/screen/home.dart';
 import 'package:untitled1/screen/widget/custom_details_text.dart';
+
+import '../constant.dart';
 
 class PlanetScreen extends StatelessWidget {
   const PlanetScreen({super.key});
@@ -8,6 +11,7 @@ class PlanetScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final planet = planets[currentIndex];
     return Scaffold(
         backgroundColor: Colors.black,
         body: Stack(
@@ -20,8 +24,8 @@ class PlanetScreen extends StatelessWidget {
 
                 Container(
                   alignment: Alignment.topCenter,
-                  child: const Text('Earth',
-                      style: TextStyle(
+                  child:  Text(planet['name'],
+                      style: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.w700,
                           color: Colors.white)),
@@ -35,21 +39,26 @@ class PlanetScreen extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                           fontSize: 24)),
                 ),
-                Image.asset('assets/images/earth 2.png', height: 280),
+                SizedBox(
+                  height: 280,
+                  width: double.infinity,
+                  child: planet['image'],
+                ),
+
                 // SizedBox(height: 10),
-                const Text(
-                    'Earth is the only known planet in the universe that supports life. Its unique combination of factors, including liquid water, a breathable atmosphere, and a suitable distance from the Sun, has created the ideal conditions for the development of complex organisms. Earth s magnetic field protected from harmful solar radiation, and its atmosphere helps to regulate temperature and weather patterns.',
-                    style: TextStyle(
+                 Text(
+                   planet['description'],
+                    style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.w400)),
                 const SizedBox(height: 10,),
-                const CustomDetailsText(text: 'Distance from Sun (km) : 149598026'),
-                const CustomDetailsText(text: 'Length of Day (hours) : 23.93'),
-                const CustomDetailsText(text: 'Orbital Period (Earth years) : 1'),
-                const CustomDetailsText(text: 'Radius (km) : 6371'),
-                const CustomDetailsText(text: 'Mass (kg) : 5.972 × 10²⁴'),
-                const CustomDetailsText(text: 'Surface Area (km²) : 5.10 × 10⁸'),
+                 CustomDetailsText(text: 'Distance from Sun (km) : ${planet['distance']}'),
+                 CustomDetailsText(text: 'Length of Day (hours) : 23.93'),
+                 CustomDetailsText(text: 'Orbital Period (Earth years) : 1'),
+                 CustomDetailsText(text: 'Radius (km) : 6371'),
+                 CustomDetailsText(text: 'Mass (kg) : 5.972 × 10²⁴'),
+                 CustomDetailsText(text: 'Surface Area (km²) : 5.10 × 10⁸'),
               ],
             ),
             Container(
