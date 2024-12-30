@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled1/constant.dart';
+import 'package:untitled1/model/planets_model.dart';
 import 'package:untitled1/screen/widget/custom_floating_button.dart';
 
 class ShowPlanets extends StatefulWidget {
@@ -9,16 +9,16 @@ class ShowPlanets extends StatefulWidget {
   State<ShowPlanets> createState() => _ShowPlanetsState();
 }
 
+
 class _ShowPlanetsState extends State<ShowPlanets> {
   int currentIndex = 0;
 
+
   @override
   Widget build(BuildContext context) {
+    List<PlanetsModel> spac;
 
-    final entries = planetMap.entries.toList();
-    final currentKey = entries[currentIndex].key;
-    final currentValue = entries[currentIndex].value;
-
+    spac = List<PlanetsModel>.from((solarSystemData).map((e) => PlanetsModel.fromMap(e))).toList();
 
     return Scaffold(
       body: SafeArea(
@@ -27,7 +27,7 @@ class _ShowPlanetsState extends State<ShowPlanets> {
             SizedBox(
               height: 400,
               width: double.infinity,
-              child: currentValue,
+              child: spac[currentIndex].image,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -35,7 +35,7 @@ class _ShowPlanetsState extends State<ShowPlanets> {
                 CustomFloutingButton(
                   icon: Icons.arrow_back_ios_new,
                   onPress: () {
-                    if(currentIndex < entries.length -1){
+                    if(currentIndex < spac.length -1 ){
                       currentIndex ++;
                     }
                     setState(() {
@@ -44,7 +44,7 @@ class _ShowPlanetsState extends State<ShowPlanets> {
                   },
                 ),
                 Text(
-                  currentKey,
+                  spac[currentIndex].name.toString(),
                   style: const TextStyle(fontSize: 24),
                 ),
                 CustomFloutingButton(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled1/constant.dart';
+import 'package:untitled1/controller/planets_controller.dart';
 import 'package:untitled1/screen/planet_details.dart';
 import 'package:untitled1/screen/widget/custom_button.dart';
 import 'package:untitled1/screen/widget/custom_floating_button.dart';
@@ -21,9 +21,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-    final planet = planets[currentIndex];
-
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
@@ -51,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 400,
                 width: double.infinity,
-                child: planet['image'],
+                child: list[currentIndex].image,
               ),
               Padding(
                 padding: const EdgeInsets.all(16),
@@ -68,8 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         setState(() {});
                       },
                     ),
-                    //    SizedBox(width: 90),
-                     Text(planet['name'],
+                     Text(list[currentIndex].name.toString(),
                         style: const TextStyle(
                             color: Colors.white,
                             fontSize: 24,
@@ -78,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       heroTag: 'uniqueTag2',
                       icon: Icons.arrow_forward,
                       onPress: () {
-                        if (currentIndex < planets.length -1) {
+                        if (currentIndex < list.length -1) {
                           currentIndex++;
                         }
                         setState(() {});

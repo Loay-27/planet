@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:untitled1/controller/planets_controller.dart';
 import 'package:untitled1/screen/home.dart';
 import 'package:untitled1/screen/widget/custom_details_text.dart';
-
-import '../constant.dart';
 
 class PlanetScreen extends StatelessWidget {
   const PlanetScreen({super.key});
@@ -11,7 +10,7 @@ class PlanetScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final planet = planets[currentIndex];
+
     return Scaffold(
         backgroundColor: Colors.black,
         body: Stack(
@@ -24,17 +23,17 @@ class PlanetScreen extends StatelessWidget {
 
                 Container(
                   alignment: Alignment.topCenter,
-                  child:  Text(planet['name'],
+                  child:  Text(list[currentIndex].name.toString(),
                       style: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.w700,
                           color: Colors.white)),
                 ),
                 const SizedBox(height: 110),
-                const Padding(
-                  padding: EdgeInsets.only(left: 8),
-                  child: Text('Earth: Our Blue Marble',
-                      style: TextStyle(
+                 Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Text(list[currentIndex].title.toString(),
+                      style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w700,
                           fontSize: 24)),
@@ -42,23 +41,23 @@ class PlanetScreen extends StatelessWidget {
                 SizedBox(
                   height: 280,
                   width: double.infinity,
-                  child: planet['image'],
+                  child: list[currentIndex].image,
                 ),
 
                 // SizedBox(height: 10),
                  Text(
-                   planet['description'],
+                   list[currentIndex].description.toString(),
                     style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.w400)),
                 const SizedBox(height: 10,),
-                 CustomDetailsText(text: 'Distance from Sun (km) : ${planet['distance']}'),
-                 CustomDetailsText(text: 'Length of Day (hours) : 23.93'),
-                 CustomDetailsText(text: 'Orbital Period (Earth years) : 1'),
-                 CustomDetailsText(text: 'Radius (km) : 6371'),
-                 CustomDetailsText(text: 'Mass (kg) : 5.972 × 10²⁴'),
-                 CustomDetailsText(text: 'Surface Area (km²) : 5.10 × 10⁸'),
+                 CustomDetailsText(text: 'Distance from Sun (km) : ${list[currentIndex].distance.toString()}'),
+                 CustomDetailsText(text: 'Length of Day (hours) : ${list[currentIndex].length.toString()}'),
+                 CustomDetailsText(text: 'Orbital Period (Earth years) : ${list[currentIndex].orbit.toString()}'),
+                 CustomDetailsText(text: 'Radius (km) : ${list[currentIndex].radius.toString()}'),
+                 CustomDetailsText(text: 'Mass (kg) : ${list[currentIndex].mass.toString()}'),
+                 CustomDetailsText(text: 'Surface Area (km²) : ${list[currentIndex].surface.toString()}'),
               ],
             ),
             Container(
